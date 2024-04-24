@@ -2,16 +2,13 @@ import streamlit as st
 from PyPDF2 import PdfReader
 
 def Extract_From_PDF(): 
-    print('Upload the PDF file to extract the text from it.')
-    uploaded_file = st.file_uploader("Choose a PDF file", type=['pdf'])
-    if uploaded_file is not None:
-        pdf = PdfReader(uploaded_file)
+    pdf_path = "/Users/abhinay/audio_book/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+    if pdf_path:
+        pdf = PdfReader(pdf_path)
         extracted_text = ''
         for page_num in range(len(pdf.pages)):
             page = pdf.pages[page_num]
             extracted_text += page.extract_text()
-            st.write(page.extract_text())
+    return extracted_text
     # in future increase the file size
-        print()
-if __name__ == "__main__":
-    Extract_From_PDF()
+    # take this text and pass it to the ollama api or to the speech generator 

@@ -1,4 +1,4 @@
-import streamlit as st
+# import streamlit as st
 from PyPDF2 import PdfReader
 
 def Extract_From_PDF(): 

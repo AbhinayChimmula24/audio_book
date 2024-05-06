@@ -8,6 +8,7 @@ step 2:
 4. source ~/.zshrc
 5. poetry --version
 
+brew install penv - python version management
 
 remove python from the env - poetry env remove python
 
@@ -17,10 +18,10 @@ pyenv local 3.11.9  # Activate Python 3.9 for the current project
 poetry env use python3.11
 
 
-poetry install
+poetry install - 
 
-poetry add lib
+poetry add lib - add the lib to the pyproject.toml
 
-poetry lock
+poetry lock - to generate poetry lock once you have added the libs
 
 

@@ -9,6 +9,8 @@ def Extract_From_PDF():
         for page_num in range(len(pdf.pages)):
             page = pdf.pages[page_num]
             extracted_text += page.extract_text()
+            with open('/Users/achimmula/Desktop/extracted_text.txt', 'w') as f:
+                f.write(extracted_text)
     return extracted_text
     # in future increase the file size
     # take this text and pass it to the ollama api or to the speech generator 

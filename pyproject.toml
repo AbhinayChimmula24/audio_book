@@ -9,12 +9,13 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.9.0,<3.9.7 || >3.9.7,<3.12"
 uvicorn = "^0.23.2"
 langserve = {extras = ["server"], version = ">=0.0.30"}
 pydantic = "<2"
 pypdf2 = "^3.0.1"
 streamlit = "^1.33.0"
+tts = "^0.22.0"
 
 
 [tool.poetry.group.dev.dependencies]

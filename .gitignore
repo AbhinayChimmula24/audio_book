@@ -1,1 +1,5 @@
 tts-env/
+.env
+output/
+phoneme_cache/
+__pycache__/

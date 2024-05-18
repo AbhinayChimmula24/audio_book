@@ -2,7 +2,8 @@
 from PyPDF2 import PdfReader
 import re
 
-def Extract_From_PDF(): 
+
+def Extract_From_PDF():
     pdf_path = "/Users/achimmula/Desktop/books_to_convert/Rich Dad Poor Dad.pdf"
     if pdf_path:
         pdf = PdfReader(pdf_path)
@@ -12,7 +13,8 @@ def Extract_From_PDF():
             extracted_text += page.extract_text()
     return extracted_text
     # in future increase the file size
-    # take this text and pass it to the ollama api or to the speech generator 
+    # take this text and pass it to the ollama api or to the speech generator
+
 
 def text_processing(starting_text, ending_text=None):
     text = Extract_From_PDF()
@@ -25,19 +27,21 @@ def text_processing(starting_text, ending_text=None):
     parts = text.split(starting_text)
 
     if len(parts) > 1:
-        
+
         ending_parts = parts[1].split(ending_text)
 
         if len(ending_parts) > 1:
             selected_text = starting_text + ending_parts[0]
         else:
             selected_text = starting_text + parts[1]
-    else: 
+    else:
         selected_text = text
 
         with open('/Users/achimmula/Desktop/starting_c1.txt', 'w') as f:
             f.write(selected_text)
         return selected_text
-    
+
+
 if __name__ == "__main__":
-    text_processing("LESSON 1: THE RICH DON’T", "LESSON 2: WHY TEACH FINANCIAL LITERACY?")
+    text_processing("LESSON 1: THE RICH DON’T",
+                    "LESSON 2: WHY TEACH FINANCIAL LITERACY?")

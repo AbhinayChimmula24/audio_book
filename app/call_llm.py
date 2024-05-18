@@ -13,6 +13,7 @@ from typing import Union
 #     response = make_chat_api_call(url=api_url, model=chat.model, message=chat.message)
 #     return response
 
+
 def make_chat_api_call(url, model, message):
     headers = {'Content-Type': 'application/json'}
     data = {
@@ -33,6 +34,7 @@ def make_chat_api_call(url, model, message):
         print("Failed to parse server's response as JSON.")
         raise
 
+
 def check_server_status(url):
     try:
         response = requests.get(url)
@@ -42,6 +44,7 @@ def check_server_status(url):
             print("Server is not running")
     except requests.exceptions.RequestException as e:
         print("Error:", e)
+
 
 api_headers = {
     "Content-Type": "application/json"
@@ -56,4 +59,5 @@ api_data = {
 
 if __name__ == "__main__":
     api_url = "http://localhost:11434/api/chat"
-    make_chat_api_call(url=api_url, model='mistral', message='which is the better programming language' )
+    make_chat_api_call(url=api_url, model='mistral',
+                       message='which is the better programming language')

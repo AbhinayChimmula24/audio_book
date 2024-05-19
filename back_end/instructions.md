@@ -24,4 +24,6 @@ poetry add lib - add the lib to the pyproject.toml
 
 poetry lock - to generate poetry lock once you have added the libs
 
+- to run the project with poetry environment command - poetry shell
+
 

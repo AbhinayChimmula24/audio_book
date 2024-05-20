@@ -15,7 +15,7 @@ with open('/Users/achimmula/Desktop/starting_c1.txt', 'r') as file:
 
     # print(text)
     tts.tts_to_file(text=contents,
-                    file_path="/Users/achimmula/Desktop/audio_books/simon_vauce_rd_pd_test1.wav",
+                    file_path="/Users/achimmula/Desktop/audio_books/simon_vauce_rd_pd_l1.wav",
                     speaker_wav="/Users/achimmula/Desktop/speakers/simon_vausce.wav",
                     language="en",
                     split_sentences=True

@@ -1,13 +1,16 @@
-'use client';
+'use client'; // Ensure this is at the top of the file
+
 import { Roboto } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 
+// Load the Roboto font from Google Fonts
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
 
+// Create the MUI theme with custom configurations
 const theme = createTheme({
   palette: {
     mode: 'light',

@@ -1,17 +1,24 @@
 # import streamlit as st
+import sys
 from PyPDF2 import PdfReader
 import re
+from pdfminer.high_level import extract_text
 
 
-def Extract_From_PDF():
-    pdf_path = "/Users/achimmula/Desktop/books_to_convert/Rich Dad Poor Dad.pdf"
+def Extract_From_PDF(pdf_path, start_text, end_text):
+    pdf_path = pdf_path.strip("'\"")
     if pdf_path:
-        pdf = PdfReader(pdf_path)
-        extracted_text = ''
-        for page_num in range(len(pdf.pages)):
-            page = pdf.pages[page_num]
-            extracted_text += page.extract_text()
-    return extracted_text
+        from_pdfMiner = extract_text(pdf_path)
+        if start_text and start_text in from_pdfMiner:
+            start_index = from_pdfMiner.index(start_text)
+        else:
+            start_index = 0
+        if end_text and end_text in from_pdfMiner:
+            end_index = from_pdfMiner.index(end_text) + len(end_text)
+        else:
+            end_index = len(from_pdfMiner)
+        return from_pdfMiner[start_index:end_index]
+    return ""
     # in future increase the file size
     # take this text and pass it to the ollama api or to the speech generator
 
@@ -42,6 +49,12 @@ def text_processing(starting_text, ending_text=None):
         return selected_text
 
 
+# if __name__ == "__main__":
+#     text_processing("LESSON 1: THE RICH DON’T",
+#                     "LESSON 2: WHY TEACH FINANCIAL LITERACY?")
 if __name__ == "__main__":
-    text_processing("LESSON 1: THE RICH DON’T",
-                    "LESSON 2: WHY TEACH FINANCIAL LITERACY?")
+    pdf_path = input("Please enter the path to the PDF file: ")
+    start_text = input("Please enter the starting text: ")
+    end_text = input("Please enter the ending text: ")
+    extracted_text = Extract_From_PDF(pdf_path, start_text, end_text)
+    print(extracted_text)

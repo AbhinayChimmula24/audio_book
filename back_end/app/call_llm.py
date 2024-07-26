@@ -1,6 +1,6 @@
 import requests
 import json
-
+from extract_from_pdf import Extract_From_PDF
 from typing import Union
 
 # from fastapi import FastAPI
@@ -14,7 +14,11 @@ from typing import Union
 #     return response
 
 
-def make_chat_api_call(url, model, message):
+def make_chat_api_call(url, model, pdf_path):
+
+    message = Extract_From_PDF(pdf_path) + " \"repeat every single word without missing anything\""
+
+    print ("message", message)
     headers = {'Content-Type': 'application/json'}
     data = {
         "model": model,
@@ -45,19 +49,7 @@ def check_server_status(url):
     except requests.exceptions.RequestException as e:
         print("Error:", e)
 
-
-api_headers = {
-    "Content-Type": "application/json"
-}
-api_data = {
-    "model": "mistral",  # Update the model
-    "messages": [
-        {"role": "user", "content": "what's up amigo"}
-    ]
-}
-
-
 if __name__ == "__main__":
     api_url = "http://localhost:11434/api/chat"
-    make_chat_api_call(url=api_url, model='mistral',
-                       message='which is the better programming language')
+    pdf_path = input("Please enter the path to the PDF file: ")
+    make_chat_api_call(url=api_url, model='llama3', pdf_path=pdf_path)

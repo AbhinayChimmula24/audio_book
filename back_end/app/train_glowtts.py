@@ -2,7 +2,7 @@
 
 # this is file is not used yet
 
-# this is useful for training the model but it is computationally expensive I didn't even finished ran 1 epoch
+# this is useful for training the model but it is computationally expensive I didn't even finished running 1 epoch
 # I am not even sure if it is working properly as expected 
 
 import os
